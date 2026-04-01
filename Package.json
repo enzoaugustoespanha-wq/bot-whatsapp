@@ -1,0 +1,19 @@
+{
+  "name": "whatsapp-bot-baileys",
+  "version": "1.0.0",
+  "description": "Bot completo para WhatsApp usando Baileys - conexão por código de emparelhamento",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
