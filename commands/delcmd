@@ -1,0 +1,17 @@
+import { PermissionLevel } from "../config/permissions.js";
+import { removeCmdCustom, getCmdsCustom } from "../utils/database.js";
+export default {
+  name: "delcmd",
+  aliases: ["rmcmd", "deletarcomando", "removercmd"],
+  description: "Remove comando personalizado. .delcmd nome",
+  permission: PermissionLevel.ADMIN,
+  async execute({ sock, msg, jid, isGroup, args }) {
+    if (!isGroup) return sock.sendMessage(jid, { text: "❌ Apenas grupos." }, { quoted: msg });
+    const nome = args.join("").toLowerCase().trim();
+    if (!nome) return sock.sendMessage(jid, { text: "❌ Informe o nome!\nVeja com *.listcmd*" }, { quoted: msg });
+    const cmds = getCmdsCustom(jid);
+    if (!cmds[nome]) return sock.sendMessage(jid, { text: `❌ Comando *.${nome}* não encontrado.` }, { quoted: msg });
+    removeCmdCustom(jid, nome);
+    await sock.sendMessage(jid, { text: `✅ Comando *.${nome}* removido!` }, { quoted: msg });
+  },
+};
