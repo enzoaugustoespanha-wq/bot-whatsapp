@@ -1,0 +1,15 @@
+import { PermissionLevel } from "../config/permissions.js";
+import { addPalavraProibida } from "../utils/database.js";
+export default {
+  name: "addnopref",
+  aliases: ["addpalavra", "addproibida", "palavraproibida"],
+  description: "Adiciona palavra proibida. .addnopref palavra",
+  permission: PermissionLevel.ADMIN,
+  async execute({ sock, msg, jid, isGroup, args }) {
+    if (!isGroup) return sock.sendMessage(jid, { text: "❌ Apenas grupos." }, { quoted: msg });
+    const palavra = args.join(" ").toLowerCase().trim();
+    if (!palavra) return sock.sendMessage(jid, { text: "❌ Informe a palavra!\nEx: *.addnopref palavrao*" }, { quoted: msg });
+    addPalavraProibida(jid, palavra);
+    await sock.sendMessage(jid, { text: `✅ Palavra *${palavra}* adicionada à lista de proibidas!\nMensagens com ela serão apagadas automaticamente.` }, { quoted: msg });
+  },
+};
