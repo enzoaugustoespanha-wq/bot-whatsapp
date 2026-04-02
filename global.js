@@ -234,3 +234,4 @@ return `⚠️️ Sobre o clima de agora no local.\n–\n→ *Local:* ${wttrin.n
 exports.movies = (movieInfo) => {
 return `• Nome do Filme traduzido para o Português: *${movieInfo.data.results[0].title}*\n• Título no idioma oficial do Filme (${movieInfo.data.results[0].original_language}): *${movieInfo.data.results[0].original_title}*\n• Data de Lançamento: *${movieInfo.data.results[0].release_date}*\n• Avaliações: *${movieInfo.data.results[0].vote_average} - (${movieInfo.data.results[0].vote_count} Votos)*\n• Popularidade do Filme (%): *${movieInfo.data.results[0].popularity.toFixed(1)}%*\n• Classificação adulta? *${movieInfo.data.results[0].adult ? 'Sim.' : 'Não.'}*\n• Linguagem Oficial do Filme: *${movieInfo.data.results[0].original_language}*\n–\n• [🎬] *Sinopse do Filme:*\n↳ ${movieInfo.data.results[0].overview}`
 }
+ 
