@@ -13,3 +13,4 @@ export default {
     await sock.sendMessage(jid, { text: `✅ Palavra *${palavra}* adicionada à lista de proibidas!\nMensagens com ela serão apagadas automaticamente.` }, { quoted: msg });
   },
 };
+ 
