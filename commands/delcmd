@@ -15,4 +15,4 @@ export default {
     await sock.sendMessage(jid, { text: `✅ Comando *.${nome}* removido!` }, { quoted: msg });
   },
 };
- 
+  
